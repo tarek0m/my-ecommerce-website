@@ -1,4 +1,4 @@
-const GRAPHQL_ENDPOINT = 'http://localhost:8000/graphql';
+const GRAPHQL_ENDPOINT = 'http://modern-store-tarek0m.infy.uk/graphql';
 
 async function graphqlRequest(query, variables = {}) {
   try {
