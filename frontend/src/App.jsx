@@ -134,7 +134,7 @@ function App() {
         product_id: item.id,
         quantity: item.quantity,
         unit_price: item.price,
-        selected_attributes: item.selectedAttributes || 5,
+        selected_attributes: item.selectedAttributes || null,
       }));
 
       const response = await graphqlRequest(CREATE_ORDER, {
