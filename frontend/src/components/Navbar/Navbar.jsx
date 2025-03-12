@@ -32,11 +32,7 @@ function Navbar({
       </div>
       <Link to='/'>
         <div className={styles['nav-brand']}>
-          <img
-            src='src/assets/Icon/a-logo.svg'
-            alt='Logo'
-            className={styles['brand-logo']}
-          />
+          <img src='/a-logo.svg' alt='Logo' className={styles['brand-logo']} />
         </div>
       </Link>
       <div
@@ -44,7 +40,7 @@ function Navbar({
         data-testid='cart-btn'
         onClick={onCartClick}
       >
-        <img src='src/assets/Icon/EmptyCart.svg' alt='Empty Cart' />
+        <img src='/EmptyCart.svg' alt='Empty Cart' />
         {cartItemCount > 0 && (
           <span className={styles['cart-count']}>{cartItemCount}</span>
         )}
