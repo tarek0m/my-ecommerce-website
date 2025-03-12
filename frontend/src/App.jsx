@@ -180,7 +180,7 @@ function App() {
         )}
         <Navbar
           categories={categories}
-          selectedCategory={selectedCategory}
+          selectedCategory={selectedCategory.name}
           onCategorySelect={setSelectedCategory}
           cartItemCount={totalQuantity}
           onCartClick={() => setIsCartOpen(!isCartOpen)}
