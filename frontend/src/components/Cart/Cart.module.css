@@ -115,20 +115,6 @@ label {
   background-color: #000;
 }
 
-.color-option {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-}
-
-.color-option.selected {
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
-
 .item-quantity {
   height: 100%;
   display: flex;

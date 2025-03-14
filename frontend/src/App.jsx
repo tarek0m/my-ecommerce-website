@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProductList from './components/ProductList/ProductList';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Navbar from './components/Navbar/Navbar';
@@ -95,10 +95,12 @@ function App() {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((i) => {
         if (i.id !== item.id) return false;
-
         // Check if all selected attributes match
-        for (const attribute of item.attributes) {
-          if (i[attribute.id] !== item[attribute.id]) {
+        for (const attribute in item.selectedAttributes) {
+          if (
+            i.selectedAttributes[attribute] !==
+            item.selectedAttributes[attribute]
+          ) {
             return false;
           }
         }
@@ -113,6 +115,7 @@ function App() {
 
       return [...prevItems, item];
     });
+    setIsCartOpen(true);
   };
 
   const updateCartItemQuantity = (itemId, change) => {
@@ -137,16 +140,15 @@ function App() {
         selected_attributes: item.selectedAttributes || null,
       }));
 
-      const response = await graphqlRequest(CREATE_ORDER, {
+      await graphqlRequest(CREATE_ORDER, {
         items: JSON.stringify(orderItems),
       });
 
-      const createdOrder = response.data.createOrder;
       setCartItems([]);
       setIsCartOpen(false);
       setToast({
         show: true,
-        message: `Order ${createdOrder.id} placed successfully!`,
+        message: `Order placed successfully!`,
         type: 'success',
       });
     } catch (error) {
@@ -211,18 +213,21 @@ function App() {
         )}
         <main>
           <Routes>
+            <Route path='/' element={<Navigate to='/all' replace />} />
             <Route
-              path='/'
+              path='/:category'
               element={
                 <ProductList
                   categoryName={selectedCategory.name}
+                  categories={categories}
                   products={filteredProducts}
                   onAddToCart={addToCart}
+                  onCategorySelect={setSelectedCategory}
                 />
               }
             />
             <Route
-              path='/product/:id'
+              path='/:category/:id'
               element={
                 <ProductDetail products={products} onAddToCart={addToCart} />
               }

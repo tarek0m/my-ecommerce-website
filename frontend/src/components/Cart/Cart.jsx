@@ -38,7 +38,7 @@ const Cart = ({
                           <div
                             key={attribute.id}
                             className={styles['attribute-selector']}
-                            data-testid={`cart-item-attribute-${attribute.name
+                            data-testid={`product-attribute-${attribute.name
                               .toLowerCase()
                               .replace(/\s+/g, '-')}`}
                           >
@@ -54,17 +54,14 @@ const Cart = ({
                                       : ''
                                   }`}
                                   disabled
-                                  data-testid={`cart-item-attribute-${attribute.name
+                                  data-testid={`product-attribute-${attribute.name
                                     .toLowerCase()
-                                    .replace(/\s+/g, '-')}-${attribute.name
-                                    .toLowerCase()
-                                    .replace(/\s+/g, '-')}
-                                    ${
-                                      item.selectedAttributes[attribute.id] ===
-                                      attrItem.id
-                                        ? '-selected'
-                                        : ''
-                                    }`}
+                                    .replace(/\s+/g, '-')}-${attrItem.id}${
+                                    item.selectedAttributes[attribute.id] ===
+                                    attrItem.id
+                                      ? '-selected'
+                                      : ''
+                                  }`}
                                 >
                                   {attrItem.displayValue}
                                 </button>

@@ -104,6 +104,13 @@ const ProductDetail = ({ products, onAddToCart }) => {
                             ? styles.selected
                             : ''
                         }`}
+                        data-testid={`product-attribute-${attribute.name
+                          .toLowerCase()
+                          .replace(/\s+/g, '-')}-${item.id}${
+                          selectedAttributes[attribute.id] === item.id
+                            ? '-selected'
+                            : ''
+                        }`}
                         onClick={() =>
                           setSelectedAttributes({
                             ...selectedAttributes,
@@ -175,6 +182,13 @@ ProductDetail.propTypes = {
       ).isRequired,
       description: PropTypes.string.isRequired,
       inStock: PropTypes.bool.isRequired,
+      category_id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
     })
   ).isRequired,
   onAddToCart: PropTypes.func.isRequired,

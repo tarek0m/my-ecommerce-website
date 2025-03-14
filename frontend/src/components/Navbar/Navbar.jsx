@@ -13,28 +13,29 @@ function Navbar({
     <nav className={styles.navbar}>
       <div className={styles['nav-categories']}>
         {categories.map((category) => (
-          <Link to='/' key={category.name}>
+          <Link
+            to={`/${category.name}`}
+            key={category.name}
+            data-testid={`${
+              selectedCategory === category.name
+                ? 'active-category-link'
+                : 'category-link'
+            }`}
+          >
             <button
               className={`${styles['nav-link']} ${
                 selectedCategory === category.name ? styles.active : ''
               }`}
               onClick={() => onCategorySelect(category)}
-              data-testid={`${
-                selectedCategory === category.name
-                  ? 'active-category-link'
-                  : 'category-link'
-              }`}
             >
               {category.name.toUpperCase()}
             </button>
           </Link>
         ))}
       </div>
-      <Link to='/'>
-        <div className={styles['nav-brand']}>
-          <img src='/a-logo.svg' alt='Logo' className={styles['brand-logo']} />
-        </div>
-      </Link>
+      <div className={styles['nav-brand']}>
+        <img src='/a-logo.svg' alt='Logo' className={styles['brand-logo']} />
+      </div>
       <div
         className={styles['cart-icon']}
         data-testid='cart-btn'
