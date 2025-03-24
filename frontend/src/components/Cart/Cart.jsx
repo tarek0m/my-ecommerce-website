@@ -9,7 +9,7 @@ const Cart = ({
   onPlaceOrder,
 }) => {
   return (
-    <div className={styles.cart}>
+    <div className={styles.cart} data-testid='cart-overlay'>
       <h1 className={styles['cart-title']}>
         My Bag,{' '}
         <span className={styles['total-quantity']}>
