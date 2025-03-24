@@ -27,27 +27,6 @@ class AttributeItemRepository extends AbstractRepository implements ReadOnlyRepo
   }
 
   /**
-   * Find attribute items by attribute set ID
-   * 
-   * @param int $attributeSetId
-   * @return array
-   */
-  public function findByAttributeSetId(int $attributeSetId): array
-  {
-    $stmt = $this->connection->prepare("SELECT * FROM {$this->table} WHERE attribute_set_id = :attribute_set_id");
-    $stmt->execute(['attribute_set_id' => $attributeSetId]);
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $entities = [];
-    foreach ($data as $row) {
-      $entity = new $this->entityClass();
-      $entities[] = $entity->fromArray($row);
-    }
-
-    return $entities;
-  }
-
-  /**
    * Find attribute items by product ID through the junction table
    * 
    * @param string $productId

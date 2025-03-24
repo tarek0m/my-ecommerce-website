@@ -148,7 +148,7 @@ INSERT INTO product_attributes (product_id, attribute_item_id) VALUES
 ('apple-imac-2021', 17), -- 512GB capacity
 ('apple-imac-2021', 18), -- USB ports: Yes
 ('apple-imac-2021', 19), -- USB ports: No
-('apple-imac-2021', 20); -- Touch ID: Yes
+('apple-imac-2021', 20), -- Touch ID: Yes
 ('apple-imac-2021', 21); -- Touch ID: No
 
 -- iPhone 12 Pro attributes

@@ -12,12 +12,13 @@ Explore the live application: [Modern Store](https://modern-store-tarek0m.infy.u
 
 This project is a complete e-commerce solution featuring:
 
-- Modern React frontend with Vite
+- Modern React 19 frontend with Vite 6
 - PHP 8.1 backend with GraphQL API
 - MySQL database for data storage
 - Shopping cart functionality with local storage persistence
 - Product categorization and filtering
-- Order processing system
+- Attribute-based product variants
+- Order processing system with GraphQL mutations
 
 ## Tech Stack
 
@@ -34,8 +35,10 @@ This project is a complete e-commerce solution featuring:
 - PHP 8.1
 - GraphQL PHP
 - PDO for database access
-- Fast Route for routing
-- PHPDotEnv for environment configuration
+- Fast Route for routing (nikic/fast-route v1.3)
+- PHPDotEnv for environment configuration (vlucas/phpdotenv v5.6)
+- Repository pattern for data access
+- Singleton pattern for GraphQL type definitions
 
 ## Project Structure
 
@@ -43,9 +46,14 @@ This project is a complete e-commerce solution featuring:
 /
 ├── frontend/               # React frontend application
 │   ├── public/             # Static assets
+│   │   └── Gallery/        # Product images for the store
 │   ├── src/                # Source code
-│   │   ├── assets/         # Images and other assets
 │   │   ├── components/     # React components
+│   │   │   ├── Cart/       # Shopping cart components
+│   │   │   ├── Navbar/     # Navigation components
+│   │   │   ├── ProductDetail/ # Product detail page components
+│   │   │   ├── ProductList/   # Product listing components
+│   │   │   └── Toast/     # Notification components
 │   │   ├── styles/         # Global styles
 │   │   ├── utils/          # Utility functions and GraphQL queries
 │   │   ├── App.jsx         # Main application component
@@ -56,12 +64,16 @@ This project is a complete e-commerce solution featuring:
 │
 └── backend/                # PHP backend application
     ├── database/           # Database schema and sample data
+    │   ├── schema.sql      # Database structure
+    │   └── data.sql        # Sample product and category data
     ├── public/             # Public entry point
+    │   └── index.php       # Application bootstrap
     ├── src/                # Source code
     │   ├── Controller/     # Request controllers
     │   ├── Database/       # Database connection handling
     │   ├── Entity/         # Data entities
     │   ├── GraphQL/        # GraphQL type definitions
+    │   │   └── Types/      # GraphQL type implementations
     │   ├── Repository/     # Data access layer
     │   └── Router/         # Request routing
     ├── composer.json       # Backend dependencies
@@ -71,9 +83,11 @@ This project is a complete e-commerce solution featuring:
 ## Features
 
 - **Product Browsing**: View products by category with filtering options
-- **Product Details**: Detailed product pages with images and attributes
+- **Product Details**: Detailed product pages with images and attribute selection
 - **Shopping Cart**: Add products to cart with quantity management
+- **Attribute Selection**: Choose product variants based on attributes (size, color, etc.)
 - **Local Storage**: Cart persists between sessions using browser storage
+- **Quick Add**: Add products to cart directly from product listing
 - **Order Processing**: Submit orders through GraphQL mutations
 
 ## Gallery
@@ -160,7 +174,7 @@ The backend exposes a GraphQL API at `/graphql` with the following operations:
 
 ### Mutations
 
-- `createOrder`: Create a new order with items
+- `createOrder`: Create a new order with items and selected attributes
 
 ## Development
 

@@ -27,8 +27,6 @@ export const transformAttributes = (attributes) => {
     });
   });
 
-  console.log(attributeMap);
-
   // Convert Map to array
   return Array.from(attributeMap.values());
 };

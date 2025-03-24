@@ -1,7 +1,7 @@
-const GRAPHQL_ENDPOINT = 'http://localhost:8000/graphql';
+// const GRAPHQL_ENDPOINT = 'http://localhost:8000/graphql';
 
 // for production
-// const GRAPHQL_ENDPOINT = '/graphql';
+const GRAPHQL_ENDPOINT = '/graphql';
 
 async function graphqlRequest(query, variables = {}) {
   try {

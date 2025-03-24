@@ -57,7 +57,6 @@ function App() {
           attributes: transformAttributes(product.attributes),
         }));
 
-        console.log(parsedProducts);
         setProducts(parsedProducts);
         setCategories(categoriesData.data.categories);
         setIsLoading(false);
