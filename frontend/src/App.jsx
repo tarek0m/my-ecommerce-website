@@ -9,6 +9,7 @@ import './App.css';
 import { GET_PRODUCTS, GET_CATEGORIES } from './utils/graphql';
 import graphqlRequest from './utils/graphql';
 import { CREATE_ORDER } from './utils/mutations';
+import { transformAttributes } from './utils/attributeTransformer';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState({
@@ -52,10 +53,11 @@ function App() {
         const parsedProducts = productsData.data.products.map((product) => ({
           ...product,
           currency: product.currency ? JSON.parse(product.currency) : null,
-          gallery: product.gallery ? JSON.parse(product.gallery) : [],
-          attributes: product.attributes ? JSON.parse(product.attributes) : [],
+          gallery: product.gallery ? product.gallery : [],
+          attributes: transformAttributes(product.attributes),
         }));
 
+        console.log(parsedProducts);
         setProducts(parsedProducts);
         setCategories(categoriesData.data.categories);
         setIsLoading(false);

@@ -31,6 +31,11 @@ class Order extends AbstractEntity
         return (float)$this->data['total_amount'];
     }
 
+    public function getItems(): ?array
+    {
+        return $this->data['items'] ? json_decode($this->data['items'], true) : null;
+    }
+
     public function setId(int $id): self
     {
         $this->data['id'] = $id;
@@ -47,11 +52,6 @@ class Order extends AbstractEntity
     {
         $this->data['total_amount'] = $totalAmount;
         return $this;
-    }
-
-    public function getItems(): ?array
-    {
-        return $this->data['items'] ? json_decode($this->data['items'], true) : null;
     }
 
     public function setItems(?array $items): self

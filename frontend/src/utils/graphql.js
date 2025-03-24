@@ -41,7 +41,12 @@ const PRODUCT_FRAGMENT = `
     price
     currency
     gallery
-    attributes
+    attributes {
+      attribute_set_name
+      display_value
+      value
+      attributeId
+    }
   }
 `;
 

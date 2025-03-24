@@ -6,6 +6,7 @@ namespace MyStore\GraphQL\Types;
 
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\Type;
+use MyStore\Entity\Category;
 
 class CategoryType extends ObjectType
 {
@@ -22,9 +23,18 @@ class CategoryType extends ObjectType
   {
     parent::__construct([
       'name' => 'Category',
+      'description' => 'Represents a product category',
       'fields' => [
-        'id' => ['type' => Type::int()],
-        'name' => ['type' => Type::string()],
+        'id' => [
+          'type' => Type::nonNull(Type::int()),
+          'description' => 'The unique identifier of the category',
+          'resolve' => fn(Category $category) => $category->getId()
+        ],
+        'name' => [
+          'type' => Type::nonNull(Type::string()),
+          'description' => 'The name of the category',
+          'resolve' => fn(Category $category) => $category->getName()
+        ],
       ]
     ]);
   }

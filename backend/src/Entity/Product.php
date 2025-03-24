@@ -16,7 +16,6 @@ namespace MyStore\Entity;
  * @property float $price Product price
  * @property string $currency Currency code
  * @property string|null $gallery JSON encoded array of gallery images
- * @property string|null $attributes JSON encoded array of product attributes
  */
 class Product extends AbstractEntity
 {
@@ -63,11 +62,6 @@ class Product extends AbstractEntity
     public function getGallery(): ?array
     {
         return $this->data['gallery'] ? json_decode($this->data['gallery'], true) : null;
-    }
-
-    public function getAttributes(): ?array
-    {
-        return $this->data['attributes'] ? json_decode($this->data['attributes'], true) : null;
     }
 
     public function setId(string $id): self
@@ -121,12 +115,6 @@ class Product extends AbstractEntity
     public function setGallery(?array $gallery): self
     {
         $this->data['gallery'] = $gallery ? json_encode($gallery) : null;
-        return $this;
-    }
-
-    public function setAttributes(?array $attributes): self
-    {
-        $this->data['attributes'] = $attributes ? json_encode($attributes) : null;
         return $this;
     }
 }

@@ -147,17 +147,19 @@ INSERT INTO product_attributes (product_id, attribute_item_id) VALUES
 ('apple-imac-2021', 16), -- 256GB capacity
 ('apple-imac-2021', 17), -- 512GB capacity
 ('apple-imac-2021', 18), -- USB ports: Yes
+('apple-imac-2021', 19), -- USB ports: No
 ('apple-imac-2021', 20); -- Touch ID: Yes
+('apple-imac-2021', 21); -- Touch ID: No
 
 -- iPhone 12 Pro attributes
 INSERT INTO product_attributes (product_id, attribute_item_id) VALUES
-('apple-iphone-12-pro', 14), -- 512G capacity
-('apple-iphone-12-pro', 15), -- 1T capacity
 ('apple-iphone-12-pro', 9),  -- Green color
 ('apple-iphone-12-pro', 10), -- Cyan color
 ('apple-iphone-12-pro', 11), -- Blue color
 ('apple-iphone-12-pro', 12), -- Black color
-('apple-iphone-12-pro', 13); -- White color
+('apple-iphone-12-pro', 13), -- White color
+('apple-iphone-12-pro', 14), -- 512G capacity
+('apple-iphone-12-pro', 15); -- 1T capacity
 
 -- Order 1
 INSERT INTO orders (total_amount, items) VALUES
