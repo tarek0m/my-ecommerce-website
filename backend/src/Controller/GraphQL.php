@@ -11,7 +11,6 @@ use GraphQL\Type\Schema;
 use MyStore\GraphQL\Types\CategoryType;
 use MyStore\GraphQL\Types\ProductType;
 use MyStore\GraphQL\Types\OrderType;
-
 use MyStore\Repository\CategoryRepository;
 use MyStore\Repository\ProductRepository;
 use MyStore\Repository\OrderRepository;
@@ -56,7 +55,7 @@ class GraphQL
       'name' => 'Query',
       'fields' => [
         'categories' => [
-          'type' => Type::listOf(new CategoryType()),
+          'type' => Type::listOf(CategoryType::getInstance()),
           'resolve' => function () {
             try {
               $repository = new CategoryRepository(ConnectionFactory::getConnection());
@@ -69,7 +68,7 @@ class GraphQL
           }
         ],
         'products' => [
-          'type' => Type::listOf(new ProductType()),
+          'type' => Type::listOf(ProductType::getInstance()),
           'resolve' => function () {
             try {
               $repository = new ProductRepository(ConnectionFactory::getConnection());
@@ -88,7 +87,7 @@ class GraphQL
       'name' => 'Mutation',
       'fields' => [
         'createOrder' => [
-          'type' => new OrderType(),
+          'type' => OrderType::getInstance(),
           'args' => [
             'items' => Type::nonNull(Type::string())
           ],
