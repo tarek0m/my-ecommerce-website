@@ -18,7 +18,8 @@ class ProductType extends ObjectType
   public static function getInstance(): ObjectType
   {
     if (self::$instance === null) {
-      $attributeItemType = new AttributeItemType();
+      // Use the getInstance() method from AttributeItemType
+      $attributeItemType = AttributeItemType::getInstance();
       self::$instance = new static($attributeItemType);
     }
     return self::$instance;
